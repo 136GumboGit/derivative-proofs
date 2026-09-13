@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title | default("Derivative Proofs") }}</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header>
+    <div class="site-title">
+      <h1>Derivative Proofs</h1>
+      <div class="subtitle">Basic derivative proofs from the limit definition (h &rarr; 0)</div>
+    </div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/proofs/">All Proofs</a>
+    </nav>
+  </header>
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <footer>
+    <p>Reference material for students. Free to use and cite.</p>
+  </footer>
+</body>
+</html>

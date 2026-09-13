@@ -1,0 +1,150 @@
+/* Clean academic style for Derivative Proofs */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --muted: #555555;
+  --accent: #1d4ed8;
+  --border: #e0e0e0;
+}
+
+html, body {
+  font-family: Georgia, 'Times New Roman', serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 18px;
+}
+
+header {
+  border-bottom: 1px solid var(--border);
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+}
+
+header .site-title {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  font-weight: normal;
+  letter-spacing: 0.02em;
+}
+
+header .subtitle {
+  color: var(--muted);
+  font-size: 1rem;
+  margin-top: 0.25rem;
+}
+
+header nav {
+  max-width: 800px;
+  margin: 1rem auto 0 auto;
+}
+
+header nav a {
+  color: var(--accent);
+  text-decoration: none;
+  margin-right: 1.5rem;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 0.95rem;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem 4rem 1rem;
+}
+
+h1 {
+  font-size: 1.9rem;
+  font-weight: normal;
+  margin: 1.5rem 0 1rem 0;
+}
+
+h2 {
+  font-size: 1.4rem;
+  font-weight: normal;
+  margin: 2rem 0 0.75rem 0;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--accent);
+}
+
+.proof-list {
+  list-style: none;
+  margin: 1.5rem 0;
+}
+
+.proof-list li {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.proof-list a {
+  font-size: 1.1rem;
+  text-decoration: none;
+}
+
+.proof-list a:hover {
+  text-decoration: underline;
+}
+
+.proof-list .proof-desc {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.proof-body {
+  margin-top: 2rem;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 1rem;
+  margin-top: 3rem;
+  text-align: center;
+  color: var(--muted);
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 600px) {
+  html, body {
+    font-size: 16px;
+  }
+  header h1 {
+    font-size: 1.5rem;
+  }
+}
