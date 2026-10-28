@@ -1,7 +1,7 @@
 ---
 layout: proof
 title: "Exponential Rule: d/dx[e^x] = e^x"
-description: "Proof using the limit definition (factoring out e^x, series expansion of e^h)"
+description: "Proof using the limit definition and e = lim (1+h)^(1/h)"
 order: 2
 ---
 
@@ -10,6 +10,10 @@ order: 2
 <p>Goal: show that for all real $x$,</p>
 
 <p>$$\frac{d}{dx}\left[e^x\right] = e^x$$</p>
+
+<p>where $e$ is defined by</p>
+
+<p>$$e = \lim_{h \to 0} (1+h)^{1/h}$$</p>
 
 <h2>Starting from the definition</h2>
 
@@ -27,19 +31,49 @@ order: 2
 
 <p>Everything now depends on one limit.</p>
 
-<h2>Expand e<sup>h</sup> as a series</h2>
+<h2>Change variables</h2>
 
-<p>$$e^h = 1 + h + \frac{h^2}{2!} + \frac{h^3}{3!} + \cdots$$</p>
+<p>Let</p>
 
-<p>Subtracting $1$ and dividing by $h$:</p>
+<p>$$t = e^h - 1$$</p>
 
-<p>$$\frac{e^h - 1}{h} = 1 + \frac{h}{2!} + \frac{h^2}{3!} + \cdots$$</p>
+<p>Add 1 to both sides:</p>
 
-<h2>Take the limit as h &rarr; 0</h2>
+<p>$$e^h = 1 + t$$</p>
 
-<p>Every term after the first contains a positive power of $h$, so it vanishes as $h \to 0$:</p>
+<p>Take the natural log of both sides:</p>
 
-<p>$$\lim_{h \to 0} \left[ 1 + \frac{h}{2!} + \frac{h^2}{3!} + \cdots \right] = 1$$</p>
+<p>$$\ln\left(e^h\right) = \ln(1+t)$$</p>
+
+<p>$$h = \ln(1+t)$$</p>
+
+<p>Notice that as $h \to 0$,</p>
+
+<p>$$e^h \to e^0 = 1$$</p>
+
+<p>so</p>
+
+<p>$$t = e^h - 1 \to 1 - 1 = 0$$</p>
+
+<p>This means $t \to 0$ exactly when $h \to 0$, so we can rewrite the limit in terms of $t$:</p>
+
+<p>$$\lim_{h \to 0} \frac{e^h - 1}{h} = \lim_{t \to 0} \frac{t}{\ln(1+t)}$$</p>
+
+<p>Notice that the limit above is still $\frac{0}{0}$, which is indeterminate, but we now have a new pathway to determine what it is.</p>
+
+<p>Divide the top and bottom by $t$:</p>
+
+<p>$$\frac{t}{\ln(1+t)} = \frac{1}{\frac{1}{t}\ln(1+t)}$$</p>
+
+<p>Use the log rule $a \ln b = \ln\left(b^a\right)$ to move $\frac{1}{t}$ into the exponent:</p>
+
+<p>$$\frac{1}{\frac{1}{t}\ln(1+t)} = \frac{1}{\ln\left[(1+t)^{1/t}\right]}$$</p>
+
+<h2>Take the limit as t &rarr; 0</h2>
+
+<p>The expression inside the log is exactly the definition of $e$!!! Because $\ln$ is continuous, the limit can move inside it:</p>
+
+<p>$$\lim_{t \to 0} \frac{1}{\ln\left[(1+t)^{1/t}\right]} = \frac{1}{\ln\left[\lim_{t \to 0}(1+t)^{1/t}\right]} = \frac{1}{\ln e} = 1$$</p>
 
 <p>Therefore:</p>
 
