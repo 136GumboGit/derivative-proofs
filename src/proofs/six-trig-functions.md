@@ -10,7 +10,7 @@ order: 3
 <p>Each of the six basic trig functions is the length of a segment on the unit circle. Draw the radius to the point $P$ at angle $\theta$, drop a perpendicular from $P$ to the $x$-axis, and draw the line tangent to the circle at $P$. That tangent line crosses the $x$-axis at $S$ and the $y$-axis at $C$.</p>
 
 <div class="trig-wrap">
-<div class="trig-hint">Drag the white point around the circle (or click it and use the arrow keys). Hover over a triangle or an identity card (tap a card on a phone) to highlight it.</div>
+<div class="trig-hint">Drag the white point around the circle (or click it and use the arrow keys; hold Shift to jump by π/12). Hover over a triangle or an identity card (tap a card on a phone) to highlight it.</div>
 <div id="trig-app"></div>
 </div>
 
@@ -50,9 +50,9 @@ order: 3
 
 <h2>Find cot and csc with similar triangles</h2>
 
-<p>In triangle $OPC$, the angle at $O$ is $90^\circ - \theta$. The angles of a triangle add to $180^\circ$, so the angle at $C$ is</p>
+<p>In triangle $OPC$, the angle at $O$ is $\frac{\pi}{2} - \theta$. The angles of a triangle add to $\pi$, so the angle at $C$ is</p>
 
-<p>$$180^\circ - 90^\circ - (90^\circ - \theta) = \theta$$</p>
+<p>$$\pi - \frac{\pi}{2} - \left(\frac{\pi}{2} - \theta\right) = \theta$$</p>
 
 <p>So triangle $OPC$, with angle $\theta$ at $C$, is similar to triangle $OFP$, with angle $\theta$ at $O$.</p>
 

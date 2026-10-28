@@ -112,13 +112,22 @@
     cells[k] = td;
   });
 
+  // angle as a multiple of pi/12, written like "π/3" or "7π/6" (null if not one)
+  function gcd(a, b) { return b ? gcd(b, a % b) : a; }
+  function piFraction(k) {           // k twelfths of pi, 0 <= k < 24
+    if (k === 0) return "0";
+    var g = gcd(k, 12), num = k / g, den = 12 / g;
+    var top = (num === 1 ? "" : num) + "π";
+    return den === 1 ? top : top + "/" + den;
+  }
+
   var presets = document.createElement("div");
   presets.className = "trig-presets";
-  [30, 45, 60, 120, 210, 315].forEach(function (d) {
+  [2, 3, 4, 8, 14, 21].forEach(function (k) {   // π/6, π/4, π/3, 2π/3, 7π/6, 7π/4
     var b = document.createElement("button");
     b.type = "button";
-    b.textContent = d + "°";
-    b.addEventListener("click", function () { setAngle(d * Math.PI / 180); });
+    b.textContent = piFraction(k);
+    b.addEventListener("click", function () { setAngle(k * Math.PI / 12); });
     presets.appendChild(b);
   });
   readout.appendChild(presets);
@@ -288,11 +297,13 @@
     handleHalo.setAttribute("cx", X(px)); handleHalo.setAttribute("cy", Y(py));
 
     // readouts
-    var deg = Math.round(t * 180 / Math.PI);
-    if (deg === 360) deg = 0;
-    angleRow.innerHTML = "θ = " + deg + "°";
-    handle.setAttribute("aria-valuenow", deg);
-    handle.setAttribute("aria-valuetext", deg + " degrees");
+    var rad = t >= 2 * Math.PI - 0.0005 ? 0 : t;
+    var k = Math.round(rad / (Math.PI / 12));
+    var exact = Math.abs(rad - k * Math.PI / 12) < 0.0005 ? piFraction(k % 24) : null;
+    angleRow.textContent = "θ = " + (exact && exact !== "0" ? exact + " ≈ " : "") +
+      rad.toFixed(3) + " rad";
+    handle.setAttribute("aria-valuenow", rad.toFixed(3));
+    handle.setAttribute("aria-valuetext", (exact ? exact + " radians" : rad.toFixed(2) + " radians"));
     var vals = {
       sin: s, cos: c,
       tan: cosOK ? s / c : NaN, cot: sinOK ? c / s : NaN,
@@ -331,7 +342,11 @@
     var pt = svg.createSVGPoint();
     pt.x = evt.clientX; pt.y = evt.clientY;
     var p = pt.matrixTransform(svg.getScreenCTM().inverse());
-    return Math.atan2(CY - p.y, p.x - CX);
+    var a = Math.atan2(CY - p.y, p.x - CX);
+    // gently snap to multiples of π/12 so students can land on exact angles
+    var u = Math.PI / 12, n = Math.round(a / u);
+    if (Math.abs(a - n * u) < 0.03) a = n * u;
+    return a;
   }
   function startDrag(evt) {
     dragging = true;
@@ -359,7 +374,16 @@
   svg.addEventListener("pointercancel", endDrag);
 
   handle.addEventListener("keydown", function (evt) {
-    var step = (evt.shiftKey ? 15 : 1) * Math.PI / 180;
+    // arrow: 0.01 rad; shift+arrow: jump to the next multiple of π/12
+    if (evt.shiftKey) {
+      var u = Math.PI / 12, dir = (evt.key === "ArrowLeft" || evt.key === "ArrowUp") ? 1 : -1;
+      if (["ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown"].indexOf(evt.key) >= 0) {
+        var n = dir > 0 ? Math.floor(theta / u + 1e-6) + 1 : Math.ceil(theta / u - 1e-6) - 1;
+        setAngle(n * u); evt.preventDefault();
+      }
+      return;
+    }
+    var step = 0.01;
     if (evt.key === "ArrowLeft" || evt.key === "ArrowUp") { setAngle(theta + step); evt.preventDefault(); }
     if (evt.key === "ArrowRight" || evt.key === "ArrowDown") { setAngle(theta - step); evt.preventDefault(); }
   });
