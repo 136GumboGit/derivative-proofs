@@ -148,3 +148,111 @@ footer {
     font-size: 1.5rem;
   }
 }
+
+/* ---------- Interactive unit circle (trig proof) ---------- */
+.trig-wrap {
+  margin: 1.5rem 0 2rem;
+}
+.trig-hint {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+.trig-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.trig-axis { stroke: #9ca3af; stroke-width: 1; }
+.trig-circle { fill: none; stroke: #1a1a1a; stroke-width: 1.5; }
+.trig-tangent { stroke: #c4c4c4; stroke-width: 1; stroke-dasharray: 4 4; }
+.trig-radius { stroke: #1a1a1a; stroke-width: 2; }
+.trig-radius.lit { stroke-width: 3.5; }
+.trig-arc { fill: none; stroke: #1a1a1a; stroke-width: 1.2; }
+.trig-theta { font-size: 18px; font-style: italic; fill: #1a1a1a; font-family: Georgia, serif; }
+.trig-right { fill: none; stroke: #1a1a1a; stroke-width: 1; }
+.trig-seg { stroke-width: 3.5; stroke-linecap: round; transition: opacity 0.15s; }
+.trig-seg.dim, .trig-label.dim { opacity: 0.18; }
+.trig-label {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  text-anchor: middle;
+  paint-order: stroke;
+  stroke: #fff;
+  stroke-width: 4px;
+  stroke-linejoin: round;
+  pointer-events: none;
+  transition: opacity 0.15s;
+}
+.trig-one { fill: #1a1a1a; }
+.trig-dot { fill: #1a1a1a; pointer-events: none; }
+.trig-tri {
+  fill: #fde68a;
+  fill-opacity: 0;
+  stroke: none;
+  cursor: help;
+  transition: fill-opacity 0.15s;
+}
+.trig-tri.on { fill-opacity: 0.55; }
+.trig-handle {
+  fill: #fff;
+  stroke: #1a1a1a;
+  stroke-width: 3;
+  cursor: grab;
+}
+.trig-handle:focus { outline: none; stroke: var(--accent); }
+.trig-halo { fill: var(--accent); fill-opacity: 0.12; cursor: grab; }
+.trig-svg.dragging, .trig-svg.dragging .trig-handle, .trig-svg.dragging .trig-halo { cursor: grabbing; }
+
+.trig-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 1rem;
+  margin-top: 1rem;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 0.92rem;
+}
+.trig-angle { font-size: 1.15rem; font-weight: bold; margin-bottom: 0.4rem; }
+.trig-table { border-collapse: collapse; width: 100%; }
+.trig-table th { text-align: left; font-weight: normal; padding: 0.15rem 0; }
+.trig-table td { text-align: right; font-variant-numeric: tabular-nums; font-family: Menlo, Consolas, monospace; }
+.trig-swatch {
+  display: inline-block; width: 0.8em; height: 0.8em; border-radius: 2px;
+  margin-right: 0.45em; vertical-align: -0.05em;
+}
+.trig-presets { margin-top: 0.6rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.trig-presets button {
+  font: inherit; font-size: 0.85rem;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--border); border-radius: 4px;
+  background: #fafafa; cursor: pointer;
+}
+.trig-presets button:hover { border-color: var(--accent); color: var(--accent); }
+.trig-cards { display: flex; flex-direction: column; gap: 0.5rem; }
+.trig-card {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.55rem 0.75rem;
+  cursor: help;
+  transition: background 0.15s, border-color 0.15s;
+}
+.trig-card.on, .trig-card:focus { background: #fef3c7; border-color: #f59e0b; outline: none; }
+.trig-card-title { font-family: Georgia, serif; font-size: 1.05rem; }
+.trig-card-legs { color: var(--muted); font-size: 0.85rem; }
+.trig-card-check { font-family: Menlo, Consolas, monospace; font-size: 0.82rem; margin-top: 0.15rem; }
+
+@media (max-width: 600px) {
+  .trig-panel { grid-template-columns: 1fr; }
+}
+.trig-svg.trig-small .trig-label { font-size: 26px; stroke-width: 6px; }
+.trig-svg.trig-small .trig-theta { font-size: 28px; }
+.trig-svg.trig-small .trig-seg { stroke-width: 5; }
+.trig-svg.trig-small .trig-circle, .trig-svg.trig-small .trig-radius { stroke-width: 2.5; }
