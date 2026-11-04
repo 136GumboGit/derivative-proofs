@@ -2,7 +2,7 @@
 layout: proof
 title: "Unit Circle Bowties: Exact Values Step by Step"
 description: "Interactive practice: find sin, cos, and tan of any common angle using bowties, quadrants, and the short / equal / long lengths"
-order: 4
+order: 5
 ---
 
 <h1>Unit Circle Bowties</h1>

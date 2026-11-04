@@ -2,7 +2,7 @@
 layout: proof
 title: "The Six Trig Functions on the Unit Circle"
 description: "Interactive: every trig function as a length, derived with similar triangles, plus the three Pythagorean identities"
-order: 3
+order: 4
 ---
 
 <h1>The Six Trig Functions on the Unit Circle</h1>
