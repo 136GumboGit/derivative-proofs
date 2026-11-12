@@ -364,3 +364,68 @@ h3 { font-size: 1.15rem; font-weight: normal; font-style: italic; margin: 1.4rem
   font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;
   color: #b45309; border: 1px solid #f59e0b; border-radius: 999px; padding: 0.05rem 0.5rem;
 }
+
+/* ---------- Kinematics flashcards ---------- */
+.kf-filters { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin: 1.5rem 0 1rem; }
+.kf-chip {
+  border: 1px solid var(--border); background: #fff; color: var(--text);
+  padding: 6px 14px; border-radius: 999px; cursor: pointer;
+  font: 500 0.88rem Helvetica, Arial, sans-serif;
+}
+.kf-chip[aria-pressed="true"] { background: var(--text); color: #fff; border-color: var(--text); }
+.kf-stage { perspective: 1600px; }
+.kf-card {
+  position: relative; display: grid; width: 100%; min-height: 320px;
+  cursor: pointer; transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(.2,.7,.2,1);
+  border: none; padding: 0; background: none; color: inherit; font: inherit; text-align: center;
+}
+.kf-card.kf-flipped { transform: rotateY(180deg); }
+.kf-face {
+  grid-area: 1 / 1; position: relative;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  border-radius: 14px; padding: 36px 28px 46px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  box-shadow: 0 10px 28px -14px rgba(0,0,0,0.3);
+}
+.kf-front { background: #1a2333; color: #f5f3ee; }
+.kf-back { background: #fff; border: 1px solid var(--border); transform: rotateY(180deg); }
+.kf-tag {
+  position: absolute; top: 14px; left: 16px;
+  font: 600 0.7rem Helvetica, Arial, sans-serif; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent); background: #e0e8fb; padding: 3px 9px; border-radius: 999px;
+}
+.kf-front .kf-tag { color: #bfd0fb; background: rgba(191,208,251,0.14); }
+.kf-hint { position: absolute; bottom: 12px; left: 0; right: 0; font: 0.78rem Helvetica, Arial, sans-serif; color: var(--muted); }
+.kf-front .kf-hint { color: #9aa3b5; }
+.kf-math { font-family: Georgia, 'Times New Roman', serif; font-size: clamp(2rem, 6vw, 3rem); line-height: 1.25; }
+.kf-math.kf-big { font-size: clamp(3.2rem, 11vw, 4.8rem); }
+.kf-math.kf-q { font-size: clamp(1.4rem, 4vw, 1.9rem); }
+.kf-math sub, .kf-inline sub { font-size: 0.55em; font-style: normal; }
+.kf-math sup { font-size: 0.6em; }
+.kf-vbar { display: inline-block; position: relative; font-style: italic; }
+.kf-vbar::before { content: ""; position: absolute; left: 0.08em; right: 0.02em; top: 0.1em; border-top: 0.06em solid currentColor; }
+.kf-frac { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; margin: 0 0.12em; }
+.kf-frac > span { padding: 0 0.15em; line-height: 1.1; }
+.kf-frac > span:first-child { border-bottom: 0.05em solid currentColor; }
+.kf-text { font-size: clamp(1.1rem, 3vw, 1.3rem); line-height: 1.55; max-width: 34ch; }
+.kf-term { display: block; font-size: 1.55em; font-weight: bold; margin-bottom: 6px; }
+.kf-unit { display: inline-block; font-size: 0.85em; color: #bfd0fb; margin-bottom: 8px; }
+.kf-note { display: block; margin-top: 12px; font-size: 0.85em; font-style: italic; color: #c9cfdb; }
+.kf-inline { white-space: nowrap; }
+.kf-progress { height: 4px; background: var(--border); border-radius: 4px; margin-top: 16px; overflow: hidden; }
+.kf-progress > div { height: 100%; background: var(--accent); transition: width 0.3s; }
+.kf-controls { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 16px; }
+.kf-row2 { display: flex; gap: 8px; justify-content: center; margin-top: 10px; }
+.kf-btn {
+  border: 1px solid var(--border); background: #fff; color: var(--text);
+  padding: 9px 16px; border-radius: 8px; cursor: pointer;
+  font: 500 0.95rem Helvetica, Arial, sans-serif;
+}
+.kf-btn:hover { border-color: var(--text); }
+.kf-btn:disabled { opacity: 0.4; cursor: default; border-color: var(--border); }
+.kf-ghost { background: transparent; }
+.kf-counter { color: var(--muted); font: 0.95rem Helvetica, Arial, sans-serif; font-variant-numeric: tabular-nums; }
+.kf-keys { margin-top: 14px; text-align: center; color: var(--muted); font: 0.8rem Helvetica, Arial, sans-serif; }
+.kf-keys kbd { font: 500 0.75rem Helvetica, Arial, sans-serif; border: 1px solid var(--border); border-bottom-width: 2px; border-radius: 5px; padding: 1px 6px; }
+@media (prefers-reduced-motion: reduce) { .kf-card { transition: none; } }
